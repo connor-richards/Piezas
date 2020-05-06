@@ -114,8 +114,7 @@ Piece Piezas::pieceAt(int row, int column)
 Piece Piezas::gameState()
 {
   /* vars to keep track of longest lines */
-  int omax = 0;
-  int xmax = 0;
+  int omax = 0, xmax = 0, curo = 0, curx = 0;
 
   /* iterate through to check for blank spaces */
   for(int row=0; row<3; row++) {
@@ -128,16 +127,50 @@ Piece Piezas::gameState()
     }
   }
 
-  for(int toggle=0; toggle<2; toggle++) {
-    /* check X top row */
-    if(board[0][0] == X) {
-      if(1>xmax) xmax = 1;
-      if(board [0][1] == X) {
-        if(2>xmax) xmax = 2;
-        if(board [0][2] == X) {
-          if(3>xmax) xmax = 4;
-          if(board [0][3] == X) xmax = 4;
+  /* vertical */
+  for(int col=0; col<board[0].size(); col++) {
+    for(int row=0; row<board.size(); row++) {
+      if(board[row][col] == X) {
+        curo = 0;
+        curx++;
+        if(curx > xmax) {
+          xmax = curx;
         }
+      }
+      else if(board[row][col] == O) {
+        curx = 0;
+        curo++;
+        if(curo > omax) {
+          omax = curo;
+        }
+      }
+      else {
+        cerr << "Error: not X or O\n";
+        assert(false);
+      }
+    }
+  }
+
+  /* horizontal */
+  for(int row=0; row<board.size(); row++) {
+    for(int col=0; col<board[row].size(); col++) {
+      if(board[row][col] == X) {
+        curo = 0;
+        curx++;
+        if(curx > xmax) {
+          xmax = curx;
+        }
+      }
+      else if(board[row][col] == O) {
+        curx = 0;
+        curo++;
+        if(curo > omax) {
+          omax = curo;
+        }
+      }
+      else {
+        cerr << "Error: not X or O\n";
+        assert(false);
       }
     }
   }
