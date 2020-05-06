@@ -19,7 +19,7 @@ TEST(PiezasTest, sanityCheck)
   ASSERT_TRUE(true);
 }
 
-TEST(PiezasTest, sanityCheck)
+TEST(PiezasTest, emptyGame)
 {
   Piezas game;
   if(game.gameState() == Invalid) {
