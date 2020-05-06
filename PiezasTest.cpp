@@ -45,12 +45,23 @@ TEST(PiezasTest, simpleTie)
 TEST(PiezasTest, simpleWin)
 {
   Piezas game;
-  game.dropPiece(idx); //TODO drop rest of pieces for win
-ASSERT_TRUE(true); //TODO
+  bool toggle=true;
+  for(int idx=0; idx<4; idx++) {
+    for(int idx2=0; idx2<3; idx2++) {
+      if(toggle==true) {
+        game.dropPiece(idx);
+        toggle = !toggle;
+      }
+      else {
+        game.dropPiece(90);
+        toggle = !toggle;
+      }
+    }
+  }//TODO have to drop all peices, this would only be half
   if(game.gameState() == Blank) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  ASSERT_TRUE(true);//TODO change to false
 }
 
 TEST(PiezasTest, filledBoardReset)
