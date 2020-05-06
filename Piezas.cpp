@@ -1,5 +1,6 @@
 #include "Piezas.h"
 #include <vector>
+#include <assert.h>
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -27,7 +28,7 @@ Piezas::Piezas()
   for(int row=0; row<3; row++) {
     std::vector<Piece> tmp;
     for(int col=0; col<4; col++) {
-      tmp.push_back(empty)
+      tmp.push_back(empty);
     }
     board.push_back(tmp);
   }
@@ -68,8 +69,7 @@ Piece Piezas::dropPiece(int column)
   }
 
   if(column > 4) {
-    Piece tmp = Invalid;
-    return tmp;
+    return Invalid;
   }
   else if(board[2][column-1]==Blank) {
     board[2][column-1]=cur;
@@ -84,7 +84,6 @@ Piece Piezas::dropPiece(int column)
     return cur;
   }
   else {
-    Piece tmp = Blank;
     return Blank;
   }
 }
@@ -96,8 +95,7 @@ Piece Piezas::dropPiece(int column)
 Piece Piezas::pieceAt(int row, int column)
 {
   if(row>3 || column>4) {
-    Piece tmp = Invalid;
-    return tmp;
+    return Invalid;
   }
   return board[row-1][column-1];
 }
@@ -121,15 +119,14 @@ Piece Piezas::gameState()
     for(int col=0; col<4; col++) {
       if(board[row][col] == Blank) {
         /* blank space, game not over */
-        Piece tmp = Invalid;
-        return tmp;
+        return Invalid;
       }
     }
   }
 
   /* vertical */
-  for(int col=0; col<board[0].size(); col++) {
-    for(int row=0; row<board.size(); row++) {
+  for(unsigned int col=0; col<board[0].size(); col++) {
+    for(unsigned int row=0; row<board.size(); row++) {
       if(board[row][col] == X) {
         curo = 0;
         curx++;
@@ -145,15 +142,15 @@ Piece Piezas::gameState()
         }
       }
       else {
-        cerr << "Error: not X or O\n";
+        std::cerr << "Error: not X or O\n";
         assert(false);
       }
     }
   }
 
   /* horizontal */
-  for(int row=0; row<board.size(); row++) {
-    for(int col=0; col<board[row].size(); col++) {
+  for(unsigned int row=0; row<board.size(); row++) {
+    for(unsigned int col=0; col<board[row].size(); col++) {
       if(board[row][col] == X) {
         curo = 0;
         curx++;
@@ -169,7 +166,7 @@ Piece Piezas::gameState()
         }
       }
       else {
-        cerr << "Error: not X or O\n";
+        std::cerr << "Error: not X or O\n";
         assert(false);
       }
     }
@@ -177,17 +174,14 @@ Piece Piezas::gameState()
 
   /* O wins */
   if(omax > xmax) {
-    Piece tmp = O;
-    return tmp;
+    return O;
   }
   /* X wins */
   else if(xmax > omax) {
-    Piece tmp = X;
-    return tmp;
+    return X;
   }
   /* tie */
   else {
-    Piece tmp = Blank;
-    return tmp;
+    return Blank;
   }
 }
