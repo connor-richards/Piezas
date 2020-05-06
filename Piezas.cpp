@@ -41,10 +41,9 @@ Piezas::Piezas()
  **/
 void Piezas::reset()
 {
-  Piece empty = Blank;
   for(int row=0; row<3; row++) {
     for(int col=0; col<4; col++) {
-      board[row][col] = empty;
+      board[row][col] = Blank;
     }
   }
 }
