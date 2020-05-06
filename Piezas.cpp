@@ -71,16 +71,16 @@ Piece Piezas::dropPiece(int column)
   if(column > 4) {
     return Invalid;
   }
-  else if(board[2][column-1]==Blank) {
-    board[2][column-1]=cur;
+  else if(board[2][column]==Blank) {
+    board[2][column]=cur;
     return cur;
   }
-  else if(board[1][column-1]==Blank) {
-    board[1][column-1]=cur;
+  else if(board[1][column]==Blank) {
+    board[1][column]=cur;
     return cur;
   }
-  else if(board[0][column-1]==Blank) {
-    board[0][column-1]=cur;
+  else if(board[0][column]==Blank) {
+    board[0][column]=cur;
     return cur;
   }
   else {
@@ -97,7 +97,7 @@ Piece Piezas::pieceAt(int row, int column)
   if(row>3 || column>4) {
     return Invalid;
   }
-  return board[row-1][column-1];
+  return board[row][column];
 }
 
 /**
