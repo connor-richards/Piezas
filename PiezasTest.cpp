@@ -25,7 +25,9 @@ TEST(PiezasTest, emptyGame)
   if(game.gameState() == Invalid) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  else {
+    ASSERT_TRUE(false);
+  }
 }
 
 TEST(PiezasTest, simpleTie)
@@ -45,20 +47,14 @@ TEST(PiezasTest, simpleTie)
 TEST(PiezasTest, simpleWin)
 {
   Piezas game;
-  bool toggle=true;
   for(int idx=0; idx<4; idx++) {
-    for(int idx2=0; idx2<3; idx2++) {
-      if(toggle==true) {
-        game.dropPiece(idx);
-        toggle = !toggle;
-        idx--;
-      }
-      else {
-        game.dropPiece(90);
-        toggle = !toggle;
-      }
-    }
-  }//TODO
+    game.dropPiece(idx);
+    game.dropPiece(idx+99);
+    game.dropPiece(idx);
+    game.dropPiece(idx+99);
+    game.dropPiece(idx);
+    game.dropPiece(idx+99);
+  }
   if(game.gameState() == X) {
     ASSERT_TRUE(true);
   }
