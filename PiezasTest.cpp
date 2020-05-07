@@ -30,6 +30,20 @@ TEST(PiezasTest, invalidDrop)
   }
 }
 
+TEST(PiezasTest, dropOnFilledSpace)
+{
+  Piezas game;
+  game.dropPiece(0);
+  game.dropPiece(0);
+  game.dropPiece(0);
+  if(game.dropPiece(0) == Blank) {
+    ASSERT_TRUE(true);
+  }
+  else {
+    ASSERT_TRUE(false);
+  }
+}
+
 TEST(PiezasTest, emptyGame)
 {
   Piezas game;
