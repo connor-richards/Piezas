@@ -14,11 +14,6 @@ class PiezasTest : public ::testing::Test
     virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
-TEST(PiezasTest, sanityCheck)
-{
-  ASSERT_TRUE(true);
-}
-
 TEST(PiezasTest, invalidDrop)
 {
   Piezas game;
@@ -71,7 +66,7 @@ TEST(PiezasTest, simpleTie)
   }
 }
 
-TEST(PiezasTest, simpleWin)
+TEST(PiezasTest, simpleXWin)
 {
   Piezas game;
   for(int idx=0; idx<4; idx++) {
@@ -90,6 +85,25 @@ TEST(PiezasTest, simpleWin)
   }
 }
 
+TEST(PiezasTest, simpleOWin)
+{
+  Piezas game;
+  for(int idx=0; idx<4; idx++) {
+    game.dropPiece(idx+99);
+    game.dropPiece(idx);
+    game.dropPiece(idx+99);
+    game.dropPiece(idx);
+    game.dropPiece(idx+99);
+    game.dropPiece(idx);
+  }
+  if(game.gameState() == O) {
+    ASSERT_TRUE(true);
+  }
+  else {
+    ASSERT_TRUE(false);
+  }
+}
+
 TEST(PiezasTest, filledBoardReset)
 {
   Piezas game;
@@ -100,6 +114,46 @@ TEST(PiezasTest, filledBoardReset)
   }
   game.reset();
   if(game.gameState() == Invalid) {
+    ASSERT_TRUE(true);
+  }
+  else {
+    ASSERT_TRUE(false);
+  }
+}
+
+TEST(PiezasTest, simplePieceAt)
+{
+  Piezas game;
+  game.dropPiece(3);
+  game.dropPiece(2);
+  game.dropPiece(3);
+  game.dropPiece(3);
+  if(game.pieceAt(0,3) == X &&
+      game.pieceAt(0,2) == O &&
+      game.PieceAt(1,3) == X &&
+      game.PieceAt(2,3) == O) {
+    ASSERT_TRUE(true);
+  }
+  else {
+    ASSERT_TRUE(false);
+  }
+}
+
+TEST(PiezasTest, invalidPieceAt)
+{
+  Piezas game;
+  if(game.pieceAt(0,90) == Invalid) {
+    ASSERT_TRUE(true);
+  }
+  else {
+    ASSERT_TRUE(false);
+  }
+}
+
+TEST(PiezasTest, blankPieceAt)
+{
+  Piezas game;
+  if(game.pieceAt(0,0) == Blank) {
     ASSERT_TRUE(true);
   }
   else {
