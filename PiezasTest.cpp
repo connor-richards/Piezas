@@ -17,6 +17,7 @@ class PiezasTest : public ::testing::Test
 TEST(PiezasTest, sanityCheck)
 {
   ASSERT_TRUE(true);
+  ASSERT_TRUE(false);
 }
 
 TEST(PiezasTest, invalidDrop)
