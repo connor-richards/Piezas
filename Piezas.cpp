@@ -66,7 +66,7 @@ Piece Piezas::dropPiece(int column)
     cur=O;
   }
 
-  if(column > 4) {
+  if(column > 3) {
     return Invalid;
   }
   else if(board[2][column]==Blank) {

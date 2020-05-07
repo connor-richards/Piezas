@@ -19,15 +19,22 @@ TEST(PiezasTest, sanityCheck)
   ASSERT_TRUE(true);
 }
 
+TEST(PiezasTest, invalidDrop)
+{
+  Piezas game;
+  if(game.dropPiece(90) == Invalid) {
+    ASSERT_TRUE(true);
+  }
+  ASSERT_TRUE(false);
+}
+
 TEST(PiezasTest, emptyGame)
 {
   Piezas game;
   if(game.gameState() == Invalid) {
     ASSERT_TRUE(true);
   }
-  else {
-    ASSERT_TRUE(false);
-  }
+  ASSERT_TRUE(false);
 }
 
 TEST(PiezasTest, simpleTie)
@@ -71,15 +78,6 @@ TEST(PiezasTest, filledBoardReset)
   }
   game.reset();
   if(game.gameState() == Invalid) {
-    ASSERT_TRUE(true);
-  }
-  ASSERT_TRUE(false);
-}
-
-TEST(PiezasTest, invalidDrop)
-{
-  Piezas game;
-  if(game.dropPiece(90) == Invalid) {
     ASSERT_TRUE(true);
   }
   ASSERT_TRUE(false);
