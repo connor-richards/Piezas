@@ -130,8 +130,8 @@ TEST(PiezasTest, simplePieceAt)
   game.dropPiece(3);
   if(game.pieceAt(0,3) == X &&
       game.pieceAt(0,2) == O &&
-      game.PieceAt(1,3) == X &&
-      game.PieceAt(2,3) == O) {
+      game.pieceAt(1,3) == X &&
+      game.pieceAt(2,3) == O) {
     ASSERT_TRUE(true);
   }
   else {
