@@ -17,7 +17,6 @@ class PiezasTest : public ::testing::Test
 TEST(PiezasTest, sanityCheck)
 {
   ASSERT_TRUE(true);
-  ASSERT_TRUE(false);
 }
 
 TEST(PiezasTest, invalidDrop)
@@ -26,7 +25,9 @@ TEST(PiezasTest, invalidDrop)
   if(game.dropPiece(90) == Invalid) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  else {
+    ASSERT_TRUE(false);
+  }
 }
 
 TEST(PiezasTest, emptyGame)
@@ -35,7 +36,9 @@ TEST(PiezasTest, emptyGame)
   if(game.gameState() == Invalid) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  else {
+    ASSERT_TRUE(false);
+  }
 }
 
 TEST(PiezasTest, simpleTie)
@@ -49,7 +52,9 @@ TEST(PiezasTest, simpleTie)
   if(game.gameState() == Blank) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  else {
+    ASSERT_TRUE(false);
+  }
 }
 
 TEST(PiezasTest, simpleWin)
@@ -66,7 +71,9 @@ TEST(PiezasTest, simpleWin)
   if(game.gameState() == X) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  else {
+    ASSERT_TRUE(false);
+  }
 }
 
 TEST(PiezasTest, filledBoardReset)
@@ -81,5 +88,7 @@ TEST(PiezasTest, filledBoardReset)
   if(game.gameState() == Invalid) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(false);
+  else {
+    ASSERT_TRUE(false);
+  }
 }
