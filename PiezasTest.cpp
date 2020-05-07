@@ -51,17 +51,18 @@ TEST(PiezasTest, simpleWin)
       if(toggle==true) {
         game.dropPiece(idx);
         toggle = !toggle;
+        idx--;
       }
       else {
         game.dropPiece(90);
         toggle = !toggle;
       }
     }
-  }//TODO have to drop all peices, this would only be half
-  if(game.gameState() == Blank) {
+  }//TODO
+  if(game.gameState() == X) {
     ASSERT_TRUE(true);
   }
-  ASSERT_TRUE(true);//TODO change to false
+  ASSERT_TRUE(false);
 }
 
 TEST(PiezasTest, filledBoardReset)
